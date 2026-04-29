@@ -28,12 +28,12 @@ public class GrowSpaceSDK {
             isConnectStrongestSignalFirst: isConnectStrongestSignalFirst,
             uwbUpdateTimeoutSeconds: uwbUpdateTimeoutSeconds)
         
-        uwbScanner.spaceUWBHandler = {
-            onUpdate(self.changeUWBResultToUWBRangeResult($0))
+        uwbScanner.spaceUWBHandler = { [weak self] in
+            onUpdate(self?.changeUWBResultToUWBRangeResult($0))
         }
         
-        uwbScanner.spcaeUWBDisconnectHandler = {
-            onDisconnect(self.convertDisconnectType($0))
+        uwbScanner.spcaeUWBDisconnectHandler = { [weak self] in
+            onDisconnect(self?.convertDisconnectType($0))
         }
     }
     
